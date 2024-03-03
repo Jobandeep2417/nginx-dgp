@@ -30,8 +30,8 @@ jobs:
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_378ecef0aedf475190f46808b27c9b31 }}/josingh2417/nginx-dgp:${{ github.sha }}
-        file: ./Dockerfile
+        tags: index.docker.io/josingh2417/nginx-dgp:${{ github.sha }}
+        file: ../../dockerfile.yaml
 
   deploy:
     runs-on: ubuntu-latest
@@ -48,4 +48,4 @@ jobs:
         app-name: 'nginx-dgp'
         slot-name: 'production'
         publish-profile: ${{ secrets.AzureAppService_PublishProfile_3bcf3c4af4a7464d8dba29018e735c4f }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_378ecef0aedf475190f46808b27c9b31 }}/josingh2417/nginx-dgp:${{ github.sha }}'
+        images: 'index.docker.io/josingh2417/nginx-dgp:${{ github.sha }}'
